@@ -19,6 +19,17 @@ START_TEST(ONEplusONE)
 }
 END_TEST
 
+START_TEST(ONEplusTWO)
+{	
+	char ostring1[MAX] = "I";
+	char ostring2[MAX] = "II";
+	ck_assert_str_eq(add(ostring1,ostring2), "III");
+	
+
+	
+}
+END_TEST
+
 
 Suite * roman_suite(void)
 {
@@ -31,6 +42,7 @@ Suite * roman_suite(void)
     tc_core = tcase_create("Core");
 
     tcase_add_test(tc_core, ONEplusONE);
+    tcase_add_test(tc_core, ONEplusTWO);
     suite_add_tcase(s, tc_core);
 
     return s;
