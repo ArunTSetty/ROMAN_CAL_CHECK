@@ -107,6 +107,16 @@ START_TEST(TWOminusONE)
 }
 END_TEST
 
+START_TEST(FIVEminusONE)
+{
+	char ostring1[MAX] = "V";
+	char ostring2[MAX] = "I";
+	ck_assert_str_eq(subtract(ostring1,ostring2), "IV");
+	
+
+	
+}
+END_TEST
 Suite * roman_suite(void)
 {
     Suite *s;
@@ -125,7 +135,8 @@ Suite * roman_suite(void)
     tcase_add_test(tc_core, TWOHUNDREDFIFTYplusTWOHUNDREDFIFTY);
     tcase_add_test(tc_core, FIVEHUNDREDONEplusFOURHUNDREDNINETYNINE);	
     tcase_add_test(tc_core, ONETHOUSANDONEHUNDREDplusFOURHUNDREDNINETYNINE);
-    tcase_add_test(tc_core, TWOminusONE);			
+    tcase_add_test(tc_core, TWOminusONE);
+    tcase_add_test(tc_core, FIVEminusONE);				
     suite_add_tcase(s, tc_core);
 
     return s;
