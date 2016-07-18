@@ -95,4 +95,6 @@ char* ReplaceSubtractives(char* subfrom[],char* subwith[],char* originalstring) 
     return ostring1;
 }
 
-
+char* subtract(char* ostring1, char* ostring2) {	
+       return ostring1;
+}
