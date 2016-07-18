@@ -63,6 +63,16 @@ START_TEST(FIFTYplusFIFTY)
 }
 END_TEST
 
+START_TEST(TWOHUNDREDFIFTYplusTWOHUNDREDFIFTY)
+{	
+	char ostring1[MAX] = "CCL";
+	char ostring2[MAX] = "CCL";
+	ck_assert_str_eq(add(ostring1,ostring2), "D");
+	
+
+	
+}
+END_TEST
 
 Suite * roman_suite(void)
 {
@@ -78,7 +88,8 @@ Suite * roman_suite(void)
     tcase_add_test(tc_core, ONEplusTWO);
     tcase_add_test(tc_core, TWOplusTWO);
     tcase_add_test(tc_core, FOURplusFIVE);
-    tcase_add_test(tc_core, FIFTYplusFIFTY);	
+    tcase_add_test(tc_core, FIFTYplusFIFTY);
+    tcase_add_test(tc_core, TWOHUNDREDFIFTYplusTWOHUNDREDFIFTY);		
     suite_add_tcase(s, tc_core);
 
     return s;
