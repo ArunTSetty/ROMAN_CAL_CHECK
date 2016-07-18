@@ -85,6 +85,17 @@ START_TEST(FIVEHUNDREDONEplusFOURHUNDREDNINETYNINE)
 }
 END_TEST
 
+START_TEST(ONETHOUSANDONEHUNDREDplusFOURHUNDREDNINETYNINE)
+{
+	char ostring1[MAX] = "MC";
+	char ostring2[MAX] = "CDXCIX";
+	ck_assert_str_eq(add(ostring1,ostring2), "MDXCIX");
+	
+
+	
+}
+END_TEST
+
 Suite * roman_suite(void)
 {
     Suite *s;
@@ -101,7 +112,8 @@ Suite * roman_suite(void)
     tcase_add_test(tc_core, FOURplusFIVE);
     tcase_add_test(tc_core, FIFTYplusFIFTY);
     tcase_add_test(tc_core, TWOHUNDREDFIFTYplusTWOHUNDREDFIFTY);
-    tcase_add_test(tc_core, FIVEHUNDREDONEplusFOURHUNDREDNINETYNINE);			
+    tcase_add_test(tc_core, FIVEHUNDREDONEplusFOURHUNDREDNINETYNINE);	
+    tcase_add_test(tc_core, ONETHOUSANDONEHUNDREDplusFOURHUNDREDNINETYNINE);			
     suite_add_tcase(s, tc_core);
 
     return s;
