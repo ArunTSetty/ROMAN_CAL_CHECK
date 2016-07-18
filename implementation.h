@@ -4,4 +4,5 @@ char* add(char* ostring1, char* ostring2);
 void Replace( char *, char *, char *);
 char* ReplaceSubtractivesk(char* originalstring);
 char* Sort(char* originalstring);
+char* Group(char* groupfrom[],char* groupwith[],char* originalstring);
 #endif
