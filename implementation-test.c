@@ -41,6 +41,17 @@ START_TEST(TWOplusTWO)
 }
 END_TEST
 
+START_TEST(FOURplusFIVE)
+{	
+	char ostring1[MAX] = "IV";
+	char ostring2[MAX] = "V";
+	ck_assert_str_eq(add(ostring1,ostring2), "IX");
+	
+
+	
+}
+END_TEST
+
 
 Suite * roman_suite(void)
 {
@@ -55,6 +66,7 @@ Suite * roman_suite(void)
     tcase_add_test(tc_core, ONEplusONE);
     tcase_add_test(tc_core, ONEplusTWO);
     tcase_add_test(tc_core, TWOplusTWO);
+    tcase_add_test(tc_core, FOURplusFIVE);	
     suite_add_tcase(s, tc_core);
 
     return s;
