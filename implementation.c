@@ -18,7 +18,8 @@ char* Cancel(char* originalstring1,char* originalstring2)
     int length=length1-length2; //Length of the New Numeral after finding difference
      
     for(i=0;i<length;i++)
-    { temp[i]='I'; //Load "I" onto temp 
+    { 
+     temp[i]='I'; //Load "I" onto temp 
     }
     strcpy(originalstring1, temp);
     return originalstring1; //Copy into originalstring and return
