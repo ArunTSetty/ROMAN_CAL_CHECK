@@ -37,7 +37,7 @@ char* Group(char* groupfrom[],char* groupwith[],char* originalstring) //To group
 }
 
 char* Sort(char* originalstring)
- {
+{
     char str[MAX] = "MDCLXVI" ; //String to specify the order of Roman Numerals M>D>C>L>X>V>I
     char temp[MAX];
     int i,j,count[ROMANORDER];
@@ -64,7 +64,7 @@ char* Sort(char* originalstring)
     strcpy(originalstring, temp);
     return originalstring;
 
- }
+}
 
  
 char* ReplaceSubtractives(char* subfrom[],char* subwith[],char* originalstring) //To replace Subtractives (IV-->IIII and vice versa)
@@ -87,7 +87,7 @@ char* ReplaceSubtractives(char* subfrom[],char* subwith[],char* originalstring) 
   */
  
  void Replace(char * o_string, char * s_string, char * r_string) 
- {
+{
      char buffer[MAX]; //a buffer to execute replace 
      char * ch; // Store the pointer returned from strstr
      if(!(ch = strstr(o_string, s_string))) //exit condition
@@ -98,9 +98,10 @@ char* ReplaceSubtractives(char* subfrom[],char* subwith[],char* originalstring) 
      o_string[0] = 0; //empty o_string for copying
      strcpy(o_string, buffer);
      return Replace(o_string, s_string, r_string);//pass recursively to replace other occurrences
-  }
+}
   
- char* add(char* ostring1, char* ostring2) {		
+ char* add(char* ostring1, char* ostring2)
+{		
 
     ReplaceSubtractives(subwith,subfrom,ostring1); //Replace Subtractives for the first Roman numeral (IV-->IIII)
     ReplaceSubtractives(subwith,subfrom,ostring2); //Replace Subtractives for the second Roman numeral (V)
@@ -111,7 +112,8 @@ char* ReplaceSubtractives(char* subfrom[],char* subwith[],char* originalstring) 
     return ostring1;
 }
 
-char* subtract(char* ostring1, char* ostring2) {
+char* subtract(char* ostring1, char* ostring2)
+{
     ReplaceSubtractives(subwith,subfrom,ostring1);//Replace Subtractives for the first Roman numeral (IV-->IIII) 
     ReplaceSubtractives(subwith,subfrom,ostring2);//Replace Subtractives for the second Roman numeral 	
     ReplaceSubtractives(groupfrom,groupwith,ostring1); //Expand the first Roman Numeral such that it is expressed only in 'I'
