@@ -1,8 +1,8 @@
 
 #include <stdio.h>
 #include "implementation.h"
- #include <string.h>
- #define MAX 4096
+#include <string.h>
+#define MAX 4096
 #define ROMANORDER 7
 
 char* subfrom[]= {"IV","IX","XL","XC","CD","CM"};
@@ -11,12 +11,12 @@ char* groupfrom[]= {"IIIII","VV","XXXXX","LL","CCCCC","DD"};
 char* groupwith[]={"V","X","L","C","D","M"};
 
 char* Cancel(char* originalstring1,char* originalstring2)
-{
+{   char temp[4096]="0";
+    int i;
     int length1=strlen(originalstring1); //Length of First Numeral
     int length2=strlen(originalstring2); //Length of Second Numeral	
     int length=length1-length2; //Length of the New Numeral after finding difference
-    char temp[4096]="0";
-    int i;
+     
     for(i=0;i<length;i++)
     { temp[i]='I'; //Load "I" onto temp 
     }
@@ -29,7 +29,8 @@ char* Cancel(char* originalstring1,char* originalstring2)
 char* Group(char* groupfrom[],char* groupwith[],char* originalstring) //To group IIIII->V, VV-->X, XXXXX->L etc.
 {
     int j;    
-    for (j=0;j<6;j++){
+    for (j=0;j<6;j++)
+    {
     Replace(originalstring, groupwith[j], groupfrom[j]);
     }
     return originalstring;
@@ -41,15 +42,14 @@ char* Sort(char* originalstring)
     char temp[MAX];
     int i,j,count[ROMANORDER];
     int length =strlen(originalstring); 
-     
-
     //Count[i] keeps a record of the number of times each ROMAN numeral appears in the original string
     for( i=0; i<ROMANORDER; i++)
     {   
         for( j=0; j<length ;j++)
         {
             if(originalstring[j]== str[i]) 
-            {count[i]++; //For example, Each time M is found, count[0] is incremented.
+            {
+		    count[i]++; //For example, Each time M is found, count[0] is incremented.
             }
         }
     }
@@ -62,8 +62,7 @@ char* Sort(char* originalstring)
         }
     }
     strcpy(originalstring, temp);
-  
-     return originalstring;
+    return originalstring;
 
  }
 
@@ -71,7 +70,8 @@ char* Sort(char* originalstring)
 char* ReplaceSubtractives(char* subfrom[],char* subwith[],char* originalstring) //To replace Subtractives (IV-->IIII and vice versa)
 {
     int j;    
-    for (j=5;j>-1;j--){
+    for (j=5;j>-1;j--)
+    {
     Replace(originalstring, subwith[j], subfrom[j]);
     }
     return originalstring;
@@ -112,12 +112,12 @@ char* ReplaceSubtractives(char* subfrom[],char* subwith[],char* originalstring) 
 }
 
 char* subtract(char* ostring1, char* ostring2) {
-	ReplaceSubtractives(subwith,subfrom,ostring1);//Replace Subtractives for the first Roman numeral (IV-->IIII) 
-        ReplaceSubtractives(subwith,subfrom,ostring2);//Replace Subtractives for the second Roman numeral 	
-	ReplaceSubtractives(groupfrom,groupwith,ostring1); //Expand the first Roman Numeral such that it is expressed only in 'I'
-	ReplaceSubtractives(groupfrom,groupwith,ostring2); //Expand the Second Roman Numeral such that it is expressed only in 'I'		
-	Cancel(ostring1,ostring2);//Cancel out the common I's  
-	Group(groupwith,groupfrom,ostring1); //Group and Compress (IIIII-->V, VV-->X, XXXXX-->L etc.     
-	ReplaceSubtractives(subfrom,subwith,ostring1); //Replace Reverse Subtractives (IIII-->IV)
-	return ostring1;
+    ReplaceSubtractives(subwith,subfrom,ostring1);//Replace Subtractives for the first Roman numeral (IV-->IIII) 
+    ReplaceSubtractives(subwith,subfrom,ostring2);//Replace Subtractives for the second Roman numeral 	
+    ReplaceSubtractives(groupfrom,groupwith,ostring1); //Expand the first Roman Numeral such that it is expressed only in 'I'
+    ReplaceSubtractives(groupfrom,groupwith,ostring2); //Expand the Second Roman Numeral such that it is expressed only in 'I'		
+    Cancel(ostring1,ostring2);//Cancel out the common I's  
+    Group(groupwith,groupfrom,ostring1); //Group and Compress (IIIII-->V, VV-->X, XXXXX-->L etc.     
+    ReplaceSubtractives(subfrom,subwith,ostring1); //Replace Reverse Subtractives (IIII-->IV)
+    return ostring1;
 }
